@@ -1,38 +1,53 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
+
+img {
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.image-grid {
+  z-index: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+img.loading {
+  top: 50%;
+  margin-left: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#loginBtn {
+  border: none;
+  border-color: transparent;
+  color: #1976d2;
+  background-color: transparent;
+  font-size: 15px;
+  text-decoration: underline;
 }
 
-.App-link {
-  color: #61dafb;
+#signUpBtn {
+  border: none;
+  border-color: transparent;
+  color: #1976d2;
+  background-color: transparent;
+  font-size: 15px;
+  text-decoration: underline;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input[type="file"]::file-selector-button {
+  border: 2px solid rgb(155, 155, 155);
+  margin-left: 11px;
+  border-radius: 3px;
+  border-width: 1px;
+  height: 30px;
+  background-color: transparent;
+  color: rgb(155, 155, 155);
+  transition: 1s;
+}
+
+input[type="file"] {
+  margin-top: 10px;
+  color: rgb(155, 155, 155);
+}
+
+input[type="file"]::file-selector-button:hover {
+  border-color: #1976d2;
+  color: #1976d2;
 }
