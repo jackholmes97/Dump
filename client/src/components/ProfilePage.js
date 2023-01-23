@@ -50,12 +50,12 @@ export default function ProfilePage({userProjects, socket, activeFollowers, acti
                 setFollowingCache([...followingCache, user])
                 setState((prevState) => ({ ...prevState, follower: prevState.follower + 1, isFollowing: true}))
                 setActiveFollowing(activeFollowing + 1)
-                console.log(state)
             })
-        socket.emit("sendNotification", {
-            senderName: currentUser.username,
-            receiverName: user.username,
-        })    
+            socket.emit("sendNotification", {
+                senderName: currentUser.username,
+                receiverName: user.username,
+            })    
+        
     }
 
     function handleUnfollow(e) {

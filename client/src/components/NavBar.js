@@ -41,18 +41,18 @@ export default function NavBar({ socket,
                                  setUserProjects, 
                                  allProjects, 
                                  setAllProjects }) {
-    // const [notifications, setNotificatons] = useState([])
-    // useEffect(() => {
-    //     socket.on("getNotification", data => {
-    //         setNotificatons((prev) => [...prev, data])
-    //     })
-    // },[socket])
+    const [notifications, setNotificatons] = useState([])
+    useEffect(() => {
+        socket.on("getNotification", data => {
+            setNotificatons((prev) => [...prev, data])
+        })
+    },[socket])
 
-    // console.log(notifications);
+    console.log(notifications);
 
-    // const showMyNotifs = notifications.filter((notif) => {
-    //     return notif.receiverName === user.username
-    // })
+    const showMyNotifs = notifications.filter((notif) => {
+        return notif.receiverName === user.username
+    })
 
     const navigate = useNavigate();
 
@@ -138,7 +138,7 @@ export default function NavBar({ socket,
                         />
                     </Box>
                     <Box sx={{ display: "flex", alignItems: "center" }}>
-                        <Tooltip title={user.name}>
+                        <Tooltip title="Notifications">
                         <IconButton
                                 onClick={handleeClick}
                                 size="small"
@@ -198,7 +198,17 @@ export default function NavBar({ socket,
                         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                     >
-                        
+                        {notifications.length === 0 ? ("No Notifications") : (
+                            notifications.map((n) => {
+                                if(user.username === n.receiverName) {
+                                    return (
+                                        <MenuItem>
+                                            <PersonIcon size="small" sx={{color: "rgb(82, 82, 82, 1)"}}></PersonIcon>
+                                            <Typography variant='body1' color="rgb(82, 82, 82, 1)">@{n.senderName} followed you!</Typography>
+                                        </MenuItem>)
+                                } 
+                            })
+                        )}
                     </Menu>
                     <Menu
                         anchorEl={anchorEl}

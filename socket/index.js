@@ -22,6 +22,7 @@ const removeUser = (socketId) => {
 
 const getUser = (username) => {
     return onlineUsers.find((user) => user.username === username);
+    
 };
 
 io.on("connection", (socket) => {
@@ -32,8 +33,10 @@ io.on("connection", (socket) => {
     });
     socket.on("sendNotification", ({senderName, receiverName}) => {
         const receiver = getUser(receiverName)
+        console.log(receiver)
         io.to(receiver.socketId).emit("getNotification", {
-            senderName
+            senderName,
+            receiverName,
         });
     });
 
