@@ -198,7 +198,11 @@ export default function NavBar({ socket,
                         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                     >
-                        {notifications.length === 0 ? ("No Notifications") : (
+                        {notifications.length === 0 ? (
+                            <MenuItem>
+                                <Typography variant='body1' color="rgb(82, 82, 82, 1)">No Notifications</Typography>
+                            </MenuItem>
+                        ) : (
                             notifications.map((n) => {
                                 if(user.username === n.receiverName) {
                                     return (
