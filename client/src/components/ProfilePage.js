@@ -51,10 +51,10 @@ export default function ProfilePage({userProjects, socket, activeFollowers, acti
                 setState((prevState) => ({ ...prevState, follower: prevState.follower + 1, isFollowing: true}))
                 setActiveFollowing(activeFollowing + 1)
             })
-            socket.emit("sendNotification", {
-                senderName: currentUser.username,
-                receiverName: user.username,
-            })    
+            // socket.emit("sendNotification", {
+            //     senderName: currentUser.username,
+            //     receiverName: user.username,
+            // })    
         
     }
 

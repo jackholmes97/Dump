@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import Zoom from 'react-medium-image-zoom'
+//import 'react-medium-image-zoom/dist/styles.css'
 import Box from "@mui/material/Box";
 import Typography from '@mui/material/Typography';
 import Masonry from "react-responsive-masonry";
@@ -7,6 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import UploadImage from "./modals/UploadImage";
 import Tooltip from "@mui/material/Tooltip";
 //import Modal from '@mui/material/Modal';
+import ImageModal from "./modals/ImageModal";
 export default function ProjectPage({user, project}) {
     console.log(project)
     console.log(user)
@@ -19,6 +22,15 @@ export default function ProjectPage({user, project}) {
     function handleUploadClose() {
         setOpenUpload(false);
     }
+    const [openImageModal, setOpenImageModal] = useState(false);
+    
+    function handleImageClick() {
+        setOpenImageModal(true);
+    }
+    function handleImageClose() {
+        setOpenImageModal(false);
+    }
+
     console.log(images)
     return (
         <>
@@ -29,9 +41,11 @@ export default function ProjectPage({user, project}) {
             <Typography sx={{ ml: 1, mb: 2 }} variant='body2' color="text.secondary" gutterBottom>
                 {project.description}
             </Typography>
-            <Masonry className="image-grid" columnsCount={3} gutter="4px">
+            <Masonry className="masonry-grid" columnsCount={3} gutter={"15px"}>
                 {images.map((image) => (
-                    <img key={image} src={image} alt={image}/>
+                    <Zoom key={image}>
+                        <img key={image} src={image} alt={image}/>
+                    </Zoom>
                 ))}
             </Masonry>
             {user.id === project.user_id ? (

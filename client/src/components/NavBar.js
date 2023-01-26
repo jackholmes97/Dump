@@ -42,11 +42,11 @@ export default function NavBar({ socket,
                                  allProjects, 
                                  setAllProjects }) {
     const [notifications, setNotificatons] = useState([])
-    useEffect(() => {
-        socket.on("getNotification", data => {
-            setNotificatons((prev) => [...prev, data])
-        })
-    },[socket])
+    // useEffect(() => {
+    //     socket.on("getNotification", data => {
+    //         setNotificatons((prev) => [...prev, data])
+    //     })
+    // },[socket])
 
     console.log(notifications);
 

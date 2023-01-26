@@ -60,22 +60,22 @@ function App() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    if(!socket) {
-      const newSocket = io("http://localhost:5001");
-      console.log(newSocket);
-      setSocket(newSocket);
-    }
-  },[socket])
+  // useEffect(() => {
+  //   if(!socket) {
+  //     const newSocket = io("http://localhost:5001");
+  //     console.log(newSocket);
+  //     setSocket(newSocket);
+  //   }
+  // },[socket])
 
-  useEffect(() => {
-    if(user && socket) {
-      socket.emit("newUser", user.username)
-      socket.on("test", (msg) => {
-        console.log(msg)
-      })
-    }
-  }, [user, socket]);
+  // useEffect(() => {
+  //   if(user && socket) {
+  //     socket.emit("newUser", user.username)
+  //     socket.on("test", (msg) => {
+  //       console.log(msg)
+  //     })
+  //   }
+  // }, [user, socket]);
 
   // console.log(user)
   // console.log(allUsers)
